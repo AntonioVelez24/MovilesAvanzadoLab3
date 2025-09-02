@@ -152,8 +152,11 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   playerPrefab: {fileID: 4994737833770271497, guid: 2f61f88c5a6701c469da65f240c423d9, type: 3}
   buffPrefab: {fileID: 3934260752578954775, guid: 9d0b90f1ada034141b3a9f7038ad7d89, type: 3}
+  enemyPrefab: {fileID: 6834192276958965199, guid: 0d45084ec582ca34d9e2e21192d96f8f, type: 3}
   BuffSpawnCount: 4
   currentBuffCount: 0
+  EnemySpawnTime: 5
+  currentEnemySpawnTime: 0
 --- !u!4 &82889021
 Transform:
   m_ObjectHideFlags: 0
@@ -280,7 +283,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: f7d1d79598e26b6458e2b6e85b1d7bea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

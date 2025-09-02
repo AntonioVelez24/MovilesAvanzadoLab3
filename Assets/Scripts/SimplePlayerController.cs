@@ -7,8 +7,8 @@ public class SimplePlayerController : NetworkBehaviour
 
     public NetworkVariable<int> Life;
 
-    public float JumpForce = 5;
-    public float Speed = 10;
+    public float JumpForce;
+    public float Speed;
 
     private Animator animator;
     private Rigidbody rb;

@@ -4,9 +4,12 @@ public class GameManager : NetworkBehaviour
 {
     public GameObject playerPrefab;
     public GameObject buffPrefab;
+    public GameObject enemyPrefab;
 
     public float BuffSpawnCount = 4;
     public float currentBuffCount = 0;
+    public float EnemySpawnTime;
+    public float currentEnemySpawnTime = 0f;
     void Start()
     {
 
@@ -38,6 +41,14 @@ public class GameManager : NetworkBehaviour
                 GameObject buff = Instantiate(buffPrefab, randomPos, Quaternion.identity);
                 buff.GetComponent<NetworkObject>().Spawn(true);
                 currentBuffCount = 0;
+            }
+            currentEnemySpawnTime += Time.deltaTime;
+            if (currentEnemySpawnTime > EnemySpawnTime)
+            {
+                Vector3 randomPos = new Vector3(Random.Range(-8, 8), 0.5f, Random.Range(-8, 8));
+                GameObject enemy = Instantiate(enemyPrefab, randomPos, Quaternion.identity);
+                enemy.GetComponent<NetworkObject>().Spawn(true);
+                currentEnemySpawnTime = 0f;
             }
         }
     }

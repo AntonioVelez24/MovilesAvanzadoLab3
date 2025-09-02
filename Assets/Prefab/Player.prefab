@@ -1646,8 +1646,10 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   PlayerID:
     m_InternalValue: 0
-  jumpForce: 5
-  speed: 5
+  Life:
+    m_InternalValue: 0
+  JumpForce: 5
+  Speed: 5
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
