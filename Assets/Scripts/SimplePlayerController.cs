@@ -10,6 +10,9 @@ public class SimplePlayerController : NetworkBehaviour
     public float JumpForce;
     public float Speed;
 
+    public GameObject projectilePrefab;
+    public Transform firePoint;
+
     private Animator animator;
     private Rigidbody rb;
     public LayerMask groundLayer;
@@ -37,6 +40,11 @@ public class SimplePlayerController : NetworkBehaviour
             JumpTriggerRpc("Jump");
         }
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            ShootRpc();
+        }
+
         CheckGroundRpc();
     }
 
@@ -56,5 +64,13 @@ public class SimplePlayerController : NetworkBehaviour
     public bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, 1f, groundLayer);
+    }
+
+    [Rpc(SendTo.Server)]
+    public void ShootRpc()
+    {
+        GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+        proj.GetComponent<NetworkObject>().Spawn(true);
+        proj.GetComponent<Rigidbody>().AddForce(Vector3.forward * 5, ForceMode.Impulse);
     }
 }

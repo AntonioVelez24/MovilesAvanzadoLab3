@@ -45,18 +45,18 @@ public class EnemyMovement : NetworkBehaviour
             transform.position += direction * speed * Time.deltaTime;
         }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            ulong playerID = collision.gameObject.GetComponent<NetworkObject>().OwnerClientId;
-            CollisionWithPlayerRpc(playerID);
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //        ulong playerID = collision.gameObject.GetComponent<NetworkObject>().OwnerClientId;
+    //        CollisionWithPlayerRpc(playerID);
+    //    }
+    //}
 
-    [Rpc(SendTo.Server)]
-    public void CollisionWithPlayerRpc(ulong playerID)
-    {
-        GetComponent<NetworkObject>().Despawn(true);
-    }
+    //[Rpc(SendTo.Server)]
+    //public void CollisionWithPlayerRpc(ulong playerID)
+    //{
+    //    GetComponent<NetworkObject>().Despawn(true);
+    //}
 }
